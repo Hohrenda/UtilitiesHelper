@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextInput extends StatelessWidget {
   final String title;
@@ -17,9 +18,12 @@ class CustomTextInput extends StatelessWidget {
       children: <Widget>[
         Text(
           title,
-          style: TextStyle(fontSize: 24),
+          style: GoogleFonts.roboto(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              textStyle: TextStyle(color: Color.fromRGBO(40, 53, 85, 1))),
         ),
-        Padding(padding: EdgeInsets.fromLTRB(500,7,0,0)),
+        Padding(padding: EdgeInsets.fromLTRB(500, 7, 0, 0)),
         Material(
           borderRadius: BorderRadius.circular(16),
           elevation: 12,

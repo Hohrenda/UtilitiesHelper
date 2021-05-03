@@ -7,6 +7,7 @@ class CustomButton extends StatelessWidget {
   final double fontSize;
   final Color color;
   final Color fontColor;
+  final VoidCallback onPressed;
 
 
 
@@ -14,6 +15,7 @@ class CustomButton extends StatelessWidget {
     @required this.content,
     @required this.height,
     @required this.width,
+    @required this.onPressed,
     this.fontSize,
     this.color,
     this.fontColor,
@@ -25,7 +27,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(child: ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: SizedBox(
         width: this.width,
         height: this.height,
@@ -34,6 +36,12 @@ class CustomButton extends StatelessWidget {
             this.content,
             textAlign: TextAlign.center,
             style: TextStyle(
+              shadows: <Shadow>[
+                Shadow(
+                  offset: Offset(2.0, 2.0),
+                  color: Color.fromRGBO(0, 0, 0, 0.1),
+                )
+              ],
               fontSize: fontSize ?? 31,
               color: fontColor ?? Colors.white,
               fontWeight: FontWeight.bold,

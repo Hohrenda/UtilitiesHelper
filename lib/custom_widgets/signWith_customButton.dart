@@ -5,17 +5,24 @@ class SignWithCustomButton extends StatelessWidget {
   final String content;
   final String icon;
   final double height;
+  final VoidCallback onPressed;
+  final MaterialStateProperty<Color> backColor;
+  final Color fontColor;
 
   SignWithCustomButton({
     @required this.content,
     @required this.icon,
     @required this.height,
+    @required this.onPressed,
+    this.backColor,
+    this.fontColor,
+
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: SizedBox(
         height: this.height,
         child: Row(
@@ -27,7 +34,7 @@ class SignWithCustomButton extends StatelessWidget {
             Text(
               content,
               style:
-                  TextStyle(fontSize: 26, color: Color.fromRGBO(40, 53, 85, 1)),
+                  TextStyle(fontSize: 26, color: fontColor ?? Color.fromRGBO(40, 53, 85, 1)),
             ),
           ],
         ),
@@ -39,7 +46,7 @@ class SignWithCustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(18.0),
           ),
         ),
-        backgroundColor: MaterialStateProperty.resolveWith<Color>(
+        backgroundColor: backColor ?? MaterialStateProperty.resolveWith<Color>(
           (Set<MaterialState> states) {
             return Colors.white;
           },
