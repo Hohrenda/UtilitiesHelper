@@ -7,6 +7,7 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 class AuthService {
   final _googleSignIn = GoogleSignIn(scopes: ['email']);
   final _firebaseInstace = FirebaseAuth.instance;
+  final facebookLogin = FacebookLogin();
 
   Future<UserModel> checkCurrentUser() async {
     try {
@@ -27,8 +28,7 @@ class AuthService {
 
   Future<UserModel> facebookSignIn() async {
     try {
-      final facebookLogin = FacebookLogin();
-      final FacebookLoginResult result = await facebookLogin.logIn(['email']);
+      final FacebookLoginResult result = await facebookLogin.logIn(['email','public_profile']);
 
 
       if (result.status == FacebookLoginStatus.loggedIn){
@@ -71,10 +71,11 @@ class AuthService {
     }
   }
 
-  Future<bool> googleLogOut() async {
+  Future<bool> logOut() async {
     try {
       await FirebaseAuth.instance.signOut();
-      _googleSignIn.signOut();
+      await facebookLogin.logOut();
+      await _googleSignIn.signOut();
       return true;
     } catch (e, s) {
       return false;
