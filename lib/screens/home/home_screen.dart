@@ -18,28 +18,42 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final titles = <String>['Home', 'Profile', 'Message'];
+  final titles = <String>['Profile', 'Home', 'Message'];
   final tabs = <Widget>[
-    HomeTab(),
     ProfileTab(),
+    HomeTab(),
     MessagesTab(),
   ];
-  int currentIndex = 0;
+  int currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 30.0,
-        currentIndex: currentIndex,
-        onTap: (index) => setState(() {
-          currentIndex = index;
-        }),
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Message'),
-        ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: (<BoxShadow>[
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 8.0,
+                offset: Offset(0.0, 0.75))
+          ]),
+        ),
+        child: BottomNavigationBar(
+          elevation: 7.0,
+          unselectedItemColor: Color.fromRGBO(106, 106, 106, 0.6),
+          selectedItemColor: Color.fromRGBO(74, 84, 143, 1),
+          type: BottomNavigationBarType.shifting,
+          iconSize: 35.0,
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() {
+            currentIndex = index;
+          }),
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Message'),
+          ],
+        ),
       ),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80.0),
@@ -52,28 +66,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-
-                    if (widget.currentUser.imageUrl.isNotEmpty)
-                    ClipRRect(
-                      child: Image.network(
-                        widget.currentUser.imageUrl,
-                        scale: 1.5,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(90)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left:8.0),
-                      child: Text(widget.currentUser.name, style: GoogleFonts.roboto(textStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),),
-                    )
-
-                  ]),
+                        if (widget.currentUser.imageUrl.isNotEmpty)
+                          ClipRRect(
+                            child: Image.network(
+                              widget.currentUser.imageUrl,
+                              scale: 1.5,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(90)),
+                          ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            widget.currentUser.name,
+                            style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                  color: Color.fromRGBO(74, 84, 143, 1.0),
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        )
+                      ]),
                   IconButton(
                     iconSize: 50.0,
-                    color: Colors.black,
                     icon: Image.asset(
                       'assets/exit_icon.png',
+                      color: Color.fromRGBO(74, 84, 143, 1.0),
                     ),
                     onPressed: () async {
                       await AuthCubit().googleLogOut();

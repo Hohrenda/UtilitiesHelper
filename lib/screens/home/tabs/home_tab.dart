@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class HomeTab extends StatefulWidget {
   @override
@@ -8,6 +9,10 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Home'),);
+    return Container(
+      color: Color.fromRGBO(206, 212, 249, 1),
+        child: Center(
+      child: Text('Home'),
+    ));
   }
 }
