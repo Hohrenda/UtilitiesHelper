@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:utilities_helper/screens/home/widgets/utility_item.dart';
 
 class HomeTab extends StatefulWidget {
   @override
@@ -11,8 +12,54 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Container(
       color: Color.fromRGBO(206, 212, 249, 1),
-        child: Center(
-      child: Text('Home'),
-    ));
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              UtilityItem(
+                title: 'Квартплата',
+                imageAsset: 'assets/flat.png',
+                isNotifyOn: true,
+              ),
+              UtilityItem(title: 'Сміття', imageAsset: 'assets/garbage.png', isNotifyOn: false,),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              UtilityItem(
+                title: 'Електрика',
+                imageAsset: 'assets/electro.png',
+                isNotifyOn: false,
+              ),
+              UtilityItem(
+                title: 'Опалення',
+                imageAsset: 'assets/heat.png',
+                isNotifyOn: false,
+
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              UtilityItem(
+                title: 'Газ',
+                imageAsset: 'assets/gas.png',
+                isNotifyOn: false,
+
+              ),
+              UtilityItem(
+                title: 'Вода',
+                imageAsset: 'assets/water.png',
+                isNotifyOn: false,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
