@@ -46,7 +46,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> googleLogOut() async {
     try {
       emit(state.copyWith(isLoading: true));
-      await _authService.googleLogOut();
+      await _authService.logOut();
       emit(state.copyWith(isLoading: false));
     } catch (e, s) {
       emit(state.copyWith(isLoading: false));
