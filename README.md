@@ -1,4 +1,4 @@
-# utilities_helper
+# Utilities Helper
 
 Our first flutter aplication
 
