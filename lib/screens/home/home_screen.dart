@@ -19,15 +19,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final titles = <String>['Profile', 'Home', 'Message'];
-  final tabs = <Widget>[
-    ProfileTab(),
-    HomeTab(),
-    MessagesTab(),
-  ];
   int currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
+    final tabs = <Widget>[
+      ProfileTab(currentUser: widget.currentUser),
+      HomeTab(currentUser: widget.currentUser),
+      MessagesTab(),
+    ];
     return Scaffold(
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -53,55 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Message'),
           ],
-        ),
-      ),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0),
-        child: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          flexibleSpace: Padding(
-            padding: const EdgeInsets.only(top: 30.0, right: 20, left: 20),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        if (widget.currentUser.imageUrl.isNotEmpty)
-                          ClipRRect(
-                            child: Image.network(
-                              widget.currentUser.imageUrl,
-                              scale: 1.5,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(90)),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Text(
-                            widget.currentUser.name,
-                            style: GoogleFonts.roboto(
-                                textStyle: TextStyle(
-                                  color: Color.fromRGBO(74, 84, 143, 1.0),
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        )
-                      ]),
-                  IconButton(
-                    iconSize: 50.0,
-                    icon: Image.asset(
-                      'assets/exit_icon.png',
-                      color: Color.fromRGBO(74, 84, 143, 1.0),
-                    ),
-                    onPressed: () async {
-                      await AuthCubit().googleLogOut();
-                      await NavigationUtils.toScreenRemoveUntil(context,
-                          screen: AuthScreen());
-                    },
-                  ),
-                ]),
-          ),
         ),
       ),
       body: tabs[currentIndex],
