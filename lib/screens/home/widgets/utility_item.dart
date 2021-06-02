@@ -35,7 +35,6 @@ class _UtilityItemState extends State<UtilityItem> {
                 blurRadius: 7,
                 offset: Offset(0, 8),
               )]
-
             ),
             width: 120,
             height: 120,
