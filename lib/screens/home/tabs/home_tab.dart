@@ -5,6 +5,8 @@ import 'package:utilities_helper/cubit/auth/auth_cubit.dart';
 import 'package:utilities_helper/models/user_model.dart';
 import 'package:utilities_helper/screens/auth/auth_screen.dart';
 import 'package:utilities_helper/screens/home/widgets/utility_item.dart';
+import 'package:utilities_helper/screens/payment/payment_screen.dart';
+import 'package:utilities_helper/screens/splash/splash_screen.dart';
 import 'package:utilities_helper/utils/navigation_utils.dart';
 
 class HomeTab extends StatefulWidget {
@@ -31,8 +33,16 @@ class _HomeTabState extends State<HomeTab> {
                 title: 'Квартплата',
                 imageAsset: 'assets/flat.png',
                 isNotifyOn: true,
+                onTap: () {
+                  NavigationUtils.toScreenRemoveUntil(context,
+                      screen: PayScreen(title: 'Квартплата',));
+                },
               ),
-              UtilityItem(title: 'Сміття', imageAsset: 'assets/garbage.png', isNotifyOn: false,),
+              UtilityItem(
+                title: 'Сміття',
+                imageAsset: 'assets/garbage.png',
+                isNotifyOn: false,
+              ),
             ],
           ),
           Row(
@@ -47,7 +57,6 @@ class _HomeTabState extends State<HomeTab> {
                 title: 'Опалення',
                 imageAsset: 'assets/heat.png',
                 isNotifyOn: false,
-
               ),
             ],
           ),
@@ -58,7 +67,6 @@ class _HomeTabState extends State<HomeTab> {
                 title: 'Газ',
                 imageAsset: 'assets/gas.png',
                 isNotifyOn: false,
-
               ),
               UtilityItem(
                 title: 'Вода',

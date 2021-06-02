@@ -6,11 +6,13 @@ class UtilityItem extends StatefulWidget {
   final String title;
   final String imageAsset;
   final bool isNotifyOn;
+  final VoidCallback onTap;
 
   UtilityItem({
     @required this.title,
     @required this.imageAsset,
     @required this.isNotifyOn,
+    @required this.onTap,
   });
 
   @override
@@ -24,18 +26,21 @@ class _UtilityItemState extends State<UtilityItem> {
       clipBehavior: Clip.none,
       children: <Widget>[
         InkWell(
-          onTap: () {},
+          onTap: () {
+            widget.onTap();
+          },
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(23),
-              color: Colors.white,
-              boxShadow: [BoxShadow(
-                color: Colors.grey.withOpacity(0.4),
-                spreadRadius: 1,
-                blurRadius: 7,
-                offset: Offset(0, 8),
-              )]
-            ),
+                borderRadius: BorderRadius.circular(23),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.4),
+                    spreadRadius: 1,
+                    blurRadius: 7,
+                    offset: Offset(0, 8),
+                  )
+                ]),
             width: 120,
             height: 120,
             child: Column(
