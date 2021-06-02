@@ -216,6 +216,13 @@ class _ProfileTabState extends State<ProfileTab> {
                     isDebt: false,
                   ),
                 ),
+                ProfileUtility(
+                  PaymentInfoPressed: () {},
+                  VendorPressed: () {},
+                  imageAsset: 'assets/garbage.png',
+                  paymentInfo: 'Сплачено  до 12.11.2021',
+                  isDebt: false,
+                ),
               ],
             ),
           )
