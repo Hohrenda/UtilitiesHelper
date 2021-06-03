@@ -58,6 +58,8 @@ flutter:
     - assets/gas.png
     - assets/heat.png
     - assets/water.png
+    - assets/address.png
+    - assets/choose_address.png
     - assets/gpay.json
     - assets/arrow.png
     - assets/plus.png

@@ -19,15 +19,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final titles = <String>['Profile', 'Home', 'Message'];
-  final tabs = <Widget>[
-    ProfileTab(),
-    HomeTab(),
-    MessagesTab(),
-  ];
   int currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
+    final tabs = <Widget>[
+      ProfileTab(currentUser: widget.currentUser),
+      HomeTab(currentUser: widget.currentUser),
+      MessagesTab(),
+    ];
     return Scaffold(
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
