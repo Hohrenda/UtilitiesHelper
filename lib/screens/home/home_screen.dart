@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0),
+        preferredSize: Size.fromHeight(104.0),
         child: AppBar(
           backgroundColor: Colors.white,
           centerTitle: true,

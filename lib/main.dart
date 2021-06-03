@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/Intellij_projects/UtilitiesHelper/lib/custom_widgets/custom_button.dart';
-import 'file:///C:/Intellij_projects/UtilitiesHelper/lib/custom_widgets/custom_logo.dart';
-import 'file:///C:/Intellij_projects/UtilitiesHelper/lib/custom_widgets/custom_text_input.dart';
-import 'file:///C:/Intellij_projects/UtilitiesHelper/lib/custom_widgets/signWith_customButton.dart';
+import 'package:utilities_helper/custom_widgets/custom_button.dart';
+import 'package:utilities_helper/custom_widgets/custom_logo.dart';
+import 'package:utilities_helper/custom_widgets/custom_text_input.dart';
+import 'package:utilities_helper/custom_widgets/signWith_customButton.dart';
 import 'package:utilities_helper/screens/splash/splash_screen.dart';
 
 void main() {
