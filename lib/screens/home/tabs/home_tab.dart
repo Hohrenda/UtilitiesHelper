@@ -6,6 +6,8 @@ import 'package:utilities_helper/models/user_model.dart';
 import 'package:utilities_helper/screens/auth/auth_screen.dart';
 import 'package:utilities_helper/screens/home/widgets/utility_item.dart';
 import 'package:utilities_helper/screens/payment/payment_screen.dart';
+import 'package:utilities_helper/screens/payment_screens/menu_payment_screen.dart';
+import 'package:utilities_helper/screens/payment_screens/payment_form_screen.dart';
 import 'package:utilities_helper/screens/splash/splash_screen.dart';
 import 'package:utilities_helper/utils/navigation_utils.dart';
 
@@ -34,14 +36,18 @@ class _HomeTabState extends State<HomeTab> {
                 imageAsset: 'assets/flat.png',
                 isNotifyOn: true,
                 onTap: () {
-                  NavigationUtils.toScreenRemoveUntil(context,
-                      screen: PayScreen(title: 'Квартплата',));
+                  NavigationUtils.toScreen(context,
+                      screen: PaymentForm(header: 'Квартплата'));
                 },
               ),
               UtilityItem(
                 title: 'Сміття',
                 imageAsset: 'assets/garbage.png',
                 isNotifyOn: false,
+                  onTap: () {
+                    NavigationUtils.toScreen(context,
+                        screen: PaymentForm(header: 'Сміття'));
+                  }
               ),
             ],
           ),
@@ -52,11 +58,19 @@ class _HomeTabState extends State<HomeTab> {
                 title: 'Електрика',
                 imageAsset: 'assets/electro.png',
                 isNotifyOn: false,
+                  onTap: () {
+                    NavigationUtils.toScreen(context,
+                        screen: MenuPaymentScreen(header: 'Електрика'));
+                  }
               ),
               UtilityItem(
                 title: 'Опалення',
                 imageAsset: 'assets/heat.png',
                 isNotifyOn: false,
+                  onTap: () {
+                    NavigationUtils.toScreen(context,
+                        screen: PaymentForm(header: 'Опалення'));
+                  }
               ),
             ],
           ),
@@ -67,11 +81,19 @@ class _HomeTabState extends State<HomeTab> {
                 title: 'Газ',
                 imageAsset: 'assets/gas.png',
                 isNotifyOn: false,
+                  onTap: () {
+                    NavigationUtils.toScreen(context,
+                        screen: MenuPaymentScreen(header: 'Газ'));
+                  }
               ),
               UtilityItem(
                 title: 'Вода',
                 imageAsset: 'assets/water.png',
                 isNotifyOn: false,
+                  onTap: () {
+                    NavigationUtils.toScreen(context,
+                        screen: MenuPaymentScreen(header: 'Вода'));
+                  }
               ),
             ],
           ),
