@@ -78,7 +78,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               ),
                             ),
                             Text(
-                              widget.currentUser.name,
+                              " ",
                               style: GoogleFonts.roboto(
                                   textStyle: TextStyle(
                                       color: Color.fromRGBO(74, 84, 143, 1.0),
@@ -97,7 +97,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               ),
                             ),
                             Text(
-                              widget.currentUser.name,
+                              " ",
                               style: GoogleFonts.roboto(
                                   textStyle: TextStyle(
                                       color: Color.fromRGBO(74, 84, 143, 1.0),

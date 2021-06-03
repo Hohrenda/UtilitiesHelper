@@ -37,7 +37,11 @@ class _HomeTabState extends State<HomeTab> {
                 isNotifyOn: true,
                 onTap: () {
                   NavigationUtils.toScreen(context,
-                      screen: PaymentForm(header: 'Квартплата'));
+                      screen: PaymentForm(
+                        header: 'Квартплата',
+                        address: "вул. Цілиноградська, кв. 509",
+                        date: "03.21",
+                        sum: "900",));
                 },
               ),
               UtilityItem(

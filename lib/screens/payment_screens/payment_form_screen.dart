@@ -11,8 +11,11 @@ import 'package:pay/pay.dart';
 
 class PaymentForm extends StatefulWidget {
   final String header;
+  final address;
+  final date;
+  final sum;
 
-  const PaymentForm({Key key, @required this.header}) : super(key: key);
+  const PaymentForm({Key key, @required this.header, this.address,this.date, this.sum}) : super(key: key);
 
   @override
   _PaymentFormState createState() => _PaymentFormState();
@@ -49,6 +52,7 @@ class _PaymentFormState extends State<PaymentForm> {
                   },
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       mass[0],
@@ -89,13 +93,13 @@ class _PaymentFormState extends State<PaymentForm> {
               child: Column(
                 children: <Widget>[
                   PaymentInfo(head: 'Адреса',
-                    foot: 'Example',
+                    foot: widget.address ?? 'Example',
                     isInput: false,
                     widthForm: 330,
                     heightForm: 80,),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
-                    child: PaymentInfo(foot: 'Місяць.Рік',
+                    child: PaymentInfo(foot: widget.date ??  'Місяць.Рік',
                       head: 'Період за який йде сплата',
                       isInput: false,
                       widthForm: 330,
@@ -103,11 +107,12 @@ class _PaymentFormState extends State<PaymentForm> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
-                    child: PaymentInfo(foot: 'xxx.xx',
+                    child: PaymentInfo(foot: widget.sum ?? 'xxx.xx',
                       head: 'Сума для сплати',
                       isInput: false,
                       widthForm: 330,
-                      heightForm: 80,),
+                      heightForm: 80,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
