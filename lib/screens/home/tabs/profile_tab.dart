@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:utilities_helper/models/user_model.dart';
 import 'package:utilities_helper/screens/home/widgets/profile_utility.dart';
+import 'package:utilities_helper/screens/home/functions/popup.dart';
 
 class ProfileTab extends StatefulWidget {
   final UserModel currentUser;
@@ -34,70 +37,75 @@ class _ProfileTabState extends State<ProfileTab> {
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(90)),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
-                            child: Text(
-                              "Прізвище",
+                    InkWell(
+                      onTap: () {
+                        createNameDialog(context,widget.currentUser);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                              child: Text(
+                                "Прізвище",
+                                style: GoogleFonts.roboto(
+                                    textStyle: TextStyle(
+                                        color: Color.fromRGBO(106, 106, 106, 1.0),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                            Text(
+                              widget.currentUser.name,
                               style: GoogleFonts.roboto(
                                   textStyle: TextStyle(
-                                      color: Color.fromRGBO(106, 106, 106, 1.0),
-                                      fontSize: 14,
+                                      color: Color.fromRGBO(74, 84, 143, 1.0),
+                                      fontSize: 25,
                                       fontWeight: FontWeight.bold)),
                             ),
-                          ),
-                          Text(
-                            widget.currentUser.name,
-                            style: GoogleFonts.roboto(
-                                textStyle: TextStyle(
-                                    color: Color.fromRGBO(74, 84, 143, 1.0),
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
-                            child: Text(
-                              "Ім’я",
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                              child: Text(
+                                "Ім’я",
+                                style: GoogleFonts.roboto(
+                                    textStyle: TextStyle(
+                                        color: Color.fromRGBO(106, 106, 106, 1.0),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                            Text(
+                              widget.currentUser.name,
                               style: GoogleFonts.roboto(
                                   textStyle: TextStyle(
-                                      color: Color.fromRGBO(106, 106, 106, 1.0),
-                                      fontSize: 14,
+                                      color: Color.fromRGBO(74, 84, 143, 1.0),
+                                      fontSize: 25,
                                       fontWeight: FontWeight.bold)),
                             ),
-                          ),
-                          Text(
-                            widget.currentUser.name,
-                            style: GoogleFonts.roboto(
-                                textStyle: TextStyle(
-                                    color: Color.fromRGBO(74, 84, 143, 1.0),
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
-                            child: Text(
-                              "По батькові",
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                              child: Text(
+                                "По батькові",
+                                style: GoogleFonts.roboto(
+                                    textStyle: TextStyle(
+                                        color: Color.fromRGBO(106, 106, 106, 1.0),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                            Text(
+                              widget.currentUser.name,
                               style: GoogleFonts.roboto(
                                   textStyle: TextStyle(
-                                      color: Color.fromRGBO(106, 106, 106, 1.0),
-                                      fontSize: 14,
+                                      color: Color.fromRGBO(74, 84, 143, 1.0),
+                                      fontSize: 25,
                                       fontWeight: FontWeight.bold)),
                             ),
-                          ),
-                          Text(
-                            widget.currentUser.name,
-                            style: GoogleFonts.roboto(
-                                textStyle: TextStyle(
-                                    color: Color.fromRGBO(74, 84, 143, 1.0),
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     )
                   ],

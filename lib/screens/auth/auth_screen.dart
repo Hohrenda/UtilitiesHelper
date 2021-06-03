@@ -6,6 +6,8 @@ import 'package:utilities_helper/custom_widgets/custom_button.dart';
 import 'package:utilities_helper/custom_widgets/custom_logo.dart';
 import 'package:utilities_helper/custom_widgets/custom_text_input.dart';
 import 'package:utilities_helper/custom_widgets/signWith_customButton.dart';
+import 'package:utilities_helper/net/firebase.dart';
+import 'package:utilities_helper/screens/auth/registration_page.dart';
 import 'package:utilities_helper/screens/home/home_screen.dart';
 import 'package:utilities_helper/utils/navigation_utils.dart';
 
@@ -83,7 +85,10 @@ class _AuthScreenState extends State<AuthScreen> {
                 content: 'Увійти',
                 height: 65,
                 width: 196,
-                onPressed: () {},
+                onPressed: () {
+                  userSignIn(loginEditingController.text.toString(),
+                      passwordEditingController.text.toString());
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20, bottom: 12),
@@ -94,7 +99,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   color: Colors.white,
                   fontSize: 20,
                   fontColor: Color.fromRGBO(40, 53, 85, 1),
-                  onPressed: () {},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()));
+                  },
                 ),
               ),
               Row(

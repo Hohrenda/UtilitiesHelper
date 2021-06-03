@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:utilities_helper/cubit/auth/auth_cubit.dart';
 import 'package:utilities_helper/cubit/auth/auth_state.dart';
+import 'package:utilities_helper/net/firebase.dart';
 import 'package:utilities_helper/utils/navigation_utils.dart';
 import 'package:utilities_helper/screens/home/home_screen.dart';
 import 'package:utilities_helper/custom_widgets/custom_logo.dart';
@@ -16,6 +17,9 @@ class RegistrationPage extends StatefulWidget
 }
 
 class _RegistationPageState extends State<RegistrationPage>{
+  TextEditingController loginEditingController = TextEditingController();
+  TextEditingController passwordEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,15 +34,11 @@ class _RegistationPageState extends State<RegistrationPage>{
             ),
             Padding(
               padding: EdgeInsets.only(top: 10),
-              child: CustomTextInput(title: 'Логiн'),
+              child: CustomTextInput(title: 'Логiн', textEditingController: loginEditingController,),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 17),
-              child: CustomTextInput(title: 'Пароль'),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 17),
-              child: CustomTextInput(title: 'Повторiть пароль'),
+              child: CustomTextInput(title: 'Пароль', textEditingController: passwordEditingController,),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 95),
@@ -46,9 +46,13 @@ class _RegistationPageState extends State<RegistrationPage>{
                   width: 330,
                   height: 65,
                   content: 'Зареєструватися',
-                  fontSize: 36,
+                  fontSize: 28,
                   fontColor: Colors.white,
                   color: Color.fromRGBO(74, 84, 143, 1),
+                  onPressed: () {
+                  userRegistration(loginEditingController.text.toString(),
+                      passwordEditingController.text.toString());
+                },
               ),
             ),
           ],
